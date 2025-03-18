@@ -1,0 +1,8 @@
+# requirements.txt
+fastapi==0.95.1
+uvicorn==0.22.0
+sqlalchemy==2.0.10
+pydantic==1.10.7
+psycopg2-binary
+pytest==7.3.1
+httpx==0.24.0

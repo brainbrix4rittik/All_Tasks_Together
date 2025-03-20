@@ -1,0 +1,31 @@
+pdf_chat_app/
+├── README.md
+├── requirements.txt
+├── .env.example
+├── app.py
+├── config/
+│   ├── __init__.py
+│   └── settings.py
+├── data/
+│   └── .gitkeep
+├── src/
+│   ├── __init__.py
+│   ├── embeddings/
+│   │   ├── __init__.py
+│   │   └── embeddings_service.py
+│   ├── pdf/
+│   │   ├── __init__.py
+│   │   └── pdf_processor.py
+│   ├── database/
+│   │   ├── __init__.py
+│   │   └── supabase_client.py
+│   ├── chat/
+│   │   ├── __init__.py
+│   │   └── chat_service.py
+│   └── ui/
+│       ├── __init__.py
+│       ├── components.py
+│       └── pages.py
+└── utils/
+    ├── __init__.py
+    └── helpers.py

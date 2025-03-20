@@ -46,7 +46,6 @@ pytest tests/
 
 ## Technologies Used
 - FastAPI
-- SQLAlchemy
 - MongoDB
 - Pydantic
 - Pytest

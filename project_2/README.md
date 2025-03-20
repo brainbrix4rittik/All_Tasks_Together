@@ -1,4 +1,4 @@
-# Todo Application with FastAPI and PostgreSQL
+# Todo Application with FastAPI and MongoDB
 
 ## Project Overview
 A backend Todo application using FastAPI, SQLAlchemy, and PostgreSQL.

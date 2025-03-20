@@ -24,7 +24,7 @@ pip install -r requirements.txt
 ```
 
 4. Configure Database
-- Update `DATABASE_URL` in `app/database.py` with your PostgreSQL credentials
+- Update `DATABASE_URL` in `app/database.py` with your MongoDB credentials
 - Create a database named `todoapp`
 
 ### Running the Application
@@ -47,6 +47,6 @@ pytest tests/
 ## Technologies Used
 - FastAPI
 - SQLAlchemy
-- PostgreSQL
+- MongoDB
 - Pydantic
 - Pytest

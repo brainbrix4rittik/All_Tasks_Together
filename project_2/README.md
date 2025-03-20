@@ -7,7 +7,7 @@ A backend Todo application using FastAPI, SQLAlchemy, and PostgreSQL.
 
 ### Prerequisites
 - Python 3.9+
-- PostgreSQL
+- MongoDB
 - pip
 
 ### Installation Steps

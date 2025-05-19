@@ -1,4 +1,4 @@
-# RESEARCH USING FIRECRAWL-MCP
+! [RESEARCH USING FIRECRAWL-MCP] (https://github.com/brainbrix4rittik/All_Tasks_Together/blob/main/project_7(research_using_firecrawl_mcp)/firecrawl_mcp.png)
 
 This project demonstrates a simple chat application using the `MCPAgent` with built-in conversation memory, leveraging the MCP (Multi-Channel Platform) and LangChain integrations. It is designed for experimentation and learning with browser automation and LLM-powered agents.
 

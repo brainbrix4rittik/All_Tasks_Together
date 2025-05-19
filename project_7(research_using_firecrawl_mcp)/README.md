@@ -1,4 +1,4 @@
-# MCP Practice Project
+# RESEARCH USING FIRECRAWL-MCP
 
 This project demonstrates a simple chat application using the `MCPAgent` with built-in conversation memory, leveraging the MCP (Multi-Channel Platform) and LangChain integrations. It is designed for experimentation and learning with browser automation and LLM-powered agents.
 

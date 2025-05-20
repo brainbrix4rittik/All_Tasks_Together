@@ -4,39 +4,27 @@
 
 import os
 import json
-import litellm # Ensure this is imported
+import litellm 
 from smolagents import ToolCollection, CodeAgent, Tool, LiteLLMModel, LogLevel
-from dotenv import load_dotenv # Import load_dotenv
-import time # Import time for dynamic filename
+from dotenv import load_dotenv
+import time 
 
-# --- Load environment variables from .env file FIRST ---
-# This is crucial to ensure API keys are available for LiteLLM and other configurations
+
 load_dotenv()
-# --- DEBUG PRINT: Check the loaded API key ---
 print(f"DEBUG: script_agent.py - ANTHROPIC_API_KEY loaded: {os.environ.get('ANTHROPIC_API_KEY')}")
-# --- END DEBUG PRINT ---
 
 
-# --- Import the research function from research_module.py ---
-# Ensure research_module.py is in the same directory or accessible in the Python path
 try:
-    # When research_module is imported, its top-level code runs,
-    # including its own load_dotenv() call.
     from research_module import conduct_research_query
     print("Successfully imported conduct_research_query from research_module.")
 except ImportError:
     print("Error: Could not import conduct_research_query from research_module.")
     print("Please ensure research_module.py is in the same directory.")
-    # Set to None if import fails so the rest of the script can still load
     conduct_research_query = None
 
 
-# --- Initialize LiteLLM Model for the Script Agent ---
-# Using Claude 3.5 Sonnet, optimized for creative tasks
-# LiteLLMModel should pick up the ANTHROPIC_API_KEY from the environment
 script_model = LiteLLMModel(model_id="claude-3-5-sonnet-20240620", num_retries=3)
 
-# --- Define Internal Tools for Script Generation ---
 
 class PlotOutlineTool(Tool):
     name = "plot_outline_generator"
@@ -49,12 +37,8 @@ class PlotOutlineTool(Tool):
     output_type = "string"
 
     def forward(self, story_concept: str):
-        # This tool would ideally use the LLM to generate a structured outline.
-        # For demonstration, we'll simulate a response or make a simple LLM call.
         print(f"--- Script Agent: Generating plot outline for: {story_concept} ---")
-        # In a real scenario, you'd make an LLM call here:
-        # outline_prompt = f"Create a detailed movie plot outline for the story: {story_concept}"
-        # outline = script_model.run(outline_prompt) # Example LLM call
+
         simulated_outline = f"""
         Plot Outline for "{story_concept[:50]}...":
         1. Setup: Introduce characters and world.
@@ -82,10 +66,8 @@ class CharacterDevelopmentTool(Tool):
     output_type = "string"
 
     def forward(self, character_name: str, role: str, story_context: str):
-        # This tool would also use the LLM to generate a character profile.
         print(f"--- Script Agent: Developing character profile for {character_name} ({role}) ---")
-        # profile_prompt = f"Create a detailed profile for a character named {character_name} who is the {role} in a story about: {story_context}"
-        # profile = script_model.run(profile_prompt) # Example LLM call
+
         simulated_profile = f"""
         Character Profile: {character_name}
         Role: {role}

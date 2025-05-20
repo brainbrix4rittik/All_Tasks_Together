@@ -1,5 +1,5 @@
 # Movie Script Generation Agent
-
+![Alt text for your image](https://github.com/brainbrix4rittik/All_Tasks_Together/blob/main/project_8(hindi_content_generation_using_smolagents_and_firecrawl_mcp)/git_image.png)
 This project implements a multi-agent system using **smolagents** to generate detailed movie script outlines from a brief story idea. It leverages a dedicated research agent as a tool to gather factual information, ensuring the generated content is well-informed and accurate. The project is designed for extensibility and uses **uv** for dependency management and **Firecrawl MCP** for advanced web research.
 
 ---

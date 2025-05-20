@@ -4,22 +4,15 @@
 
 import os
 import json
-import litellm # Ensure this is imported
+import litellm 
 from smolagents import ToolCollection, CodeAgent, Tool, LiteLLMModel, LogLevel
 from mcp import StdioServerParameters
-from dotenv import load_dotenv # Import load_dotenv
-import time # Import time for dynamic filename
+from dotenv import load_dotenv
+import time 
 
-# --- Load environment variables from .env file FIRST ---
-# This is crucial to ensure API keys are available when the module is imported
 load_dotenv()
-# --- DEBUG PRINT: Check the loaded API key ---
 print(f"DEBUG: research_module.py - ANTHROPIC_API_KEY loaded: {os.environ.get('ANTHROPIC_API_KEY')}")
-# --- END DEBUG PRINT ---
 
-
-# --- Load Firecrawl MCP Configuration ---
-# This setup is the same as your original research_agent.py
 use_firecrawl = False
 firecrawl_tool_collection = None
 try:
@@ -35,8 +28,7 @@ try:
     )
     use_firecrawl = True
 
-    # Use a context manager to ensure the MCP server is handled correctly
-    # Added a broader exception catch here to diagnose potential issues during MCP setup
+
     try:
         with ToolCollection.from_mcp(firecrawl_server_parameters, trust_remote_code=True) as collection:
              firecrawl_tool_collection = collection # Assign the collection
@@ -51,7 +43,7 @@ try:
 except FileNotFoundError:
     print("Warning: browse_mcp.json not found. Firecrawl browsing will not be available in research module.")
     use_firecrawl = False
-    # firecrawl_tool_collection remains None
+    
 
 
 # --- Custom Tool for Deeper Analysis (Same as your original) ---
@@ -97,30 +89,26 @@ def conduct_research_query(query: str) -> str:
     """
     print(f"\n--- Research Module: Starting research for query: '{query}' ---")
 
-    # Initialize the LiteLLM Model for this research task
-    # Using the same model as before
-    # LiteLLMModel should pick up the ANTHROPIC_API_KEY from the environment
     model = LiteLLMModel(model_id="claude-3-5-sonnet-20240620", num_retries=3)
 
-    # Collect all tools for the research agent
-    all_tools = [DataAnalysisTool()] # Start with the custom analysis tool
-    # Only add Firecrawl tools if they were successfully initialized earlier
+   
+    all_tools = [DataAnalysisTool()] 
+    
     if use_firecrawl and firecrawl_tool_collection:
         all_tools.extend(firecrawl_tool_collection.tools)
     else:
         print("Research Module: Firecrawl tools not available for agent instance.")
 
 
-    # Initialize the CodeAgent instance for research
+    
     research_agent_instance = CodeAgent(
-        tools=all_tools, # Pass the collected tools
+        tools=all_tools, 
         model=model,
         add_base_tools=True, # Includes basic tools like web search (DuckDuckGo)
-        verbosity_level=LogLevel.INFO # Set verbosity lower for tool calls
+        verbosity_level=LogLevel.INFO 
     )
 
-    # Construct the prompt for the research agent instance
-    # Instructing it to use final_answer to output the report content
+ 
     research_query_template = f"""
     Your primary goal is to conduct research on the following topic: "{query}"
     Identify key dates, prominent research institutions, and summarize the most promising approaches related to this topic.

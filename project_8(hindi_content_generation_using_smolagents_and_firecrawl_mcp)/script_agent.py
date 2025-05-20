@@ -180,18 +180,14 @@ def generate_movie_script(sample_story: str):
     सुनिश्चित करें कि `final_answer` तर्क में मूल क्वेरी के लिए प्रासंगिक, पूर्ण, अच्छी तरह से संरचित शोध निष्कर्ष शामिल हैं।
     """
     try:
-        # Run the script agent with the detailed prompt
-        # The output will be the content passed to final_answer
         final_script_outline_content = script_agent.run(prompt)
 
         print("\n--- Agent's Final Movie Script Outline ---")
         print(final_script_outline_content)
 
-        # --- Save the captured content to a file using standard Python ---
-        # Generate a dynamic filename based on timestamp
         timestamp = int(time.time())
-        output_filename = f"movie_script_outline_hindi_{timestamp}.txt" # Changed filename for Hindi output
-        output_filepath = os.path.join(os.getcwd(), output_filename) # Path in the current directory
+        output_filename = f"movie_script_outline_hindi_{timestamp}.txt" 
+        output_filepath = os.path.join(os.getcwd(), output_filename) 
 
         try:
             with open(output_filepath, "w", encoding="utf-8") as f:

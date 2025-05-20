@@ -1,0 +1,8 @@
+smolagents
+mcp
+litellm
+python-dotenv
+duckduckgo-search 
+anthropic
+smolagents[mcp]
+tenacity

@@ -114,7 +114,7 @@ The `browse_mcp.json` file configures the Firecrawl server. Ensure it's present 
       "command": "npx",
       "args": ["-y", "firecrawl-mcp"],
       "env": {
-        "FIRECRAWL_API_KEY": "fc-0f60a3cabe8543a1880cc108b3509e2b"
+        "FIRECRAWL_API_KEY": "your_api_key"
       }
     }
     }
